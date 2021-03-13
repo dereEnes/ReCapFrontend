@@ -14,7 +14,7 @@
             <td>{{car.id}}</td>
             <td>{{car.brandName}}</td>
             <td>{{car.colorName}}</td>
-            <td>{{car.dailyPrice}}</td>
+            <td>{{car.dailyPrice | currency:'USD':true:"1.2-2"}}</td>
             <td>{{car.modelYear}}</td>
             <td>{{car.description}}</td>
         </tr>
