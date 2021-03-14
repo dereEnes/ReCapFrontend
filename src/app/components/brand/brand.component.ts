@@ -3,6 +3,8 @@ import { Brand } from 'src/app/models/brand';
 import { BrandService } from 'src/app/services/brand.service';
 import { CarDtoService } from 'src/app/services/car-dto.service';
 import { ColorService } from 'src/app/services/color.service';
+import { CarComponent } from '../car/car.component';
+import { RentalComponent } from '../rental/rental.component';
 
 @Component({
   selector: 'app-brand',
@@ -13,16 +15,12 @@ import { ColorService } from 'src/app/services/color.service';
 export class BrandComponent implements OnInit {
   brands:Brand[]=[];
   dataLoaded=false;
-  constructor(private brandService:BrandService,
-    private carDtoService:CarDtoService
-    ) { }
+  constructor(private brandService:BrandService) { }
 
   ngOnInit(): void {
     this.getBrands();
   }
-  handleClick(brand:any){
-    this.carDtoService.getByBrand(brand.id)
-  }
+  
   getBrands(){
     this.brandService.getBrands().subscribe(response=>{
       this.brands=response.data

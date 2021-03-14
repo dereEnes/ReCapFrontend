@@ -15,7 +15,7 @@ export class CarComponent implements OnInit {
   ngOnInit(): void {
     this.getCarsDetails();
   }
-
+  
   getCarsDetails(){
     this.carsDetails.getCarsDetails().subscribe(response=>{
       this.cars=response.data
