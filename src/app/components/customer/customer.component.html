@@ -2,14 +2,18 @@
     <thead>
       <tr>
         <th scope="col">İd</th>
-        <th scope="col">Kullanıcı İd</th>
+        <th scope="col">Adı</th>
+        <th scope="col">Soyadı</th>
+        <th scope="col">Email</th>
         <th scope="col">Şirket Adı</th>
       </tr>
     </thead>
     <tbody>
       <tr class="table-dark" *ngFor="let customer of customers">
         <th scope="row">{{customer.id}}</th>
-        <td>{{customer.userId}}</td>
+        <td>{{customer.firstName}}</td>
+        <td>{{customer.lastName}}</td>
+        <td>{{customer.email}}</td>
         <td>{{customer.companyName}}</td>
       </tr>
     </tbody>

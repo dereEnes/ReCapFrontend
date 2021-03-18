@@ -1,14 +1,15 @@
+
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">İd</th>
-            <th scope="col">Marka</th>
+            
+            <th scope="col">Markalar</th>
         </tr>
     </thead>
     <tbody>
-        <tr class="table-primary" *ngFor="let brand of brands">
-            <td>{{brand.id}}</td>
-            <td>{{brand.name}}</td>
+        <tr class="table-primary active" *ngFor="let brand of brands">
+            
+            <td (click)="setCurrentBrand(brand)" routerLink="/cars/brand/{{brand.id}}">{{brand.name}}</td>
             
         </tr>
     </tbody>

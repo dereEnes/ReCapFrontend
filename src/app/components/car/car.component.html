@@ -1,3 +1,10 @@
+<div class="mb-3">
+    <label for="filterText" class="form-label">Araba Ara</label>
+    <input type="text" [(ngModel)]="filterText" class="form-control form-control-lg" id="filterText" placeholder="Aranacak Kelime">
+  </div>
+  <div *ngIf="filterText" class="alert alert-primary">
+    <b>  {{filterText | uppercase}}</b> Araması için sonuçlar;
+  </div>
 <table class="table">
     <thead>
         <tr>
@@ -14,9 +21,12 @@
             <td>{{car.id}}</td>
             <td>{{car.brandName}}</td>
             <td>{{car.colorName}}</td>
-            <td>{{car.dailyPrice | currency:'USD':true:"1.2-2"}}</td>
+            <td>{{car.dailyPrice | currency:'USD':"code":"1.2-2"}}</td>
             <td>{{car.modelYear}}</td>
             <td>{{car.description}}</td>
+            <td><input class="btn-dark" type="button" routerLink="/cars/car-detail/{{car.id}}"  value="Detaylar"></td>
         </tr>
     </tbody>
 </table>
+
+

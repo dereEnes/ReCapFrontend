@@ -22,4 +22,7 @@ export class ColorComponent implements OnInit {
       this.dataLoaded=true;
     })
   }
+  setCurrentColor(color:Color){
+
+  }
 }

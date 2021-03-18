@@ -29,4 +29,7 @@ export class BrandComponent implements OnInit {
 
     })
   }
+  setCurrentBrand(brand:Brand){
+    
+  }
 }
