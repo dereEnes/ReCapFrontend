@@ -43,6 +43,7 @@
             <th scope="col">Açıklama</th>
             <th></th>
             <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -55,6 +56,7 @@
             <td>{{car.description}}</td>
             <td><input class="btn-light" type="button" [routerLink]="['/cars/car/car-detail', car.id]"  value="Detaylar" /></td>
             <td><input class="btn-light" type="button" (click)="rentACar(car)"  [routerLink]="['/cars/car/rent', car.id]" value="Kirala" /></td>
+            <td><input type="button" value="Güncelle" class="btn-light" [routerLink]="['cars/car/carUpdate', car.id]"></td>
         </tr>
     </tbody>
 </table>
