@@ -1,0 +1,70 @@
+<div class="content">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header"><h5>Araç Kirala</h5></div>
+      <div class="card-body">
+        <form [formGroup]="rentalAddForm">
+          <div class="mb-3">
+            <label for="customer">Müşteri Seçimi</label>
+            <div class="form-group">
+              <input type="number" formControlName="customerId" class="form-control" >
+              <!-- <select [(ngModel)]="customerId" id="disabledSelect" formControlName="customerId" class="form-select">
+                <option *ngFor="let customer of customers" value="{{customer.id}}" [selected]="getSelectedCustomer(customer.id)">{{customer.firstName | uppercase}} {{customer.lastName | uppercase}}</option>
+              </select> -->
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="customer">Araba Seçimi</label>
+            <div class="form-group">
+              <input type="number" formControlName="carId" class="form-control" >
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="customer">Başlangıç Tarihi</label>
+            <div class="form-group">
+              <input type="date" formControlName="rentDate" class="form-control" >
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="customer">Bitiş Tarihi</label>
+            <div class="form-group">
+              <input type="date" formControlName="returnDate" class="form-control" >
+            </div>
+          </div>
+
+        </form>
+      </div>
+      <div class="card-footer"><button class="btn btn-fill btn-primary"  (click)="addRental()" [routerLink]="['/cars/car/rent/payment/2']">Ekle</button></div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- <form>
+    <div class="mb-3">
+        <label for="disabledSelect" class="form-label">Müşteri Seçimi</label>
+        <select [(ngModel)]="customerId" id="disabledSelect" name="www" class="form-select">
+          <option *ngFor="let customer of customers" value="{{customer.id}}" [selected]="getSelectedCustomer(customer.id)">{{customer.firstName | uppercase}} {{customer.lastName | uppercase}}</option>
+        </select>
+      </div>
+    
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Başlangıç Tarihi</label>
+      <input type="date" class="form-control" >
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Bitiş Tarihi</label>
+        <input type="date" class="form-control" [disabled]="getReturnDateDisable()">
+      </div>
+    <div class="mb-3 form-check">
+      <input type="checkbox" [(ngModel)]="" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Süresiz</label>
+    </div>
+    <button type="submit" (click)="deneme()" class="btn btn-primary">Submit</button>
+  </form> -->

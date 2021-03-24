@@ -1,5 +1,32 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <select class="form-select" [(ngModel)]="selectedBrand" aria-label="Default select example" id="selectBrand">
+                
+                <option  *ngFor="let brand of brands;let i =index" [value]="i">{{brand.name | uppercase}}</option>
+                
+                
+              </select>
+        </div>
+        <div class="col-md-4">
+            <select class="form-select" [(ngModel)]="selectedColor" aria-label="Default select example" id="selectColor">
+                
+                <option  *ngFor="let color of colors; let i = index" [value]="i">{{color.name | uppercase}}</option>
+                
+                
+              </select>
+        </div>
+        <div class="col-md-4">
+            <button type="button" (click)="Filtrele()" *ngIf="brands" routerLink="/cars/{{brands[selectedBrand].id}}/{{brands[selectedColor].id}}" class="btn btn-success">Filtrele</button>
+        </div>
+    </div>
+</div>
+
+<!-- /cars/{{brands[selectedBrand].id}} -->
+  
+<hr>
 <div class="mb-3">
-    <label for="filterText" class="form-label">Araba Ara</label>
+    <label for="filterText" class="form-label"><b> Araba Ara</b></label>
     <input type="text" [(ngModel)]="filterText" class="form-control form-control-lg" id="filterText" placeholder="Aranacak Kelime">
   </div>
   <div *ngIf="filterText" class="alert alert-primary">
@@ -14,17 +41,20 @@
             <th scope="col">Fiyat</th>
             <th scope="col">Model Yılı</th>
             <th scope="col">Açıklama</th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
-        <tr class="table-success" *ngFor="let car of cars">
+        <tr class="table-light" *ngFor="let car of cars | filterCar:filterText" >
             <td>{{car.id}}</td>
             <td>{{car.brandName}}</td>
             <td>{{car.colorName}}</td>
             <td>{{car.dailyPrice | currency:'USD':"code":"1.2-2"}}</td>
             <td>{{car.modelYear}}</td>
             <td>{{car.description}}</td>
-            <td><input class="btn-dark" type="button" routerLink="/cars/car-detail/{{car.id}}"  value="Detaylar"></td>
+            <td><input class="btn-light" type="button" [routerLink]="['/cars/car/car-detail', car.id]"  value="Detaylar" /></td>
+            <td><input class="btn-light" type="button" (click)="rentACar(car)"  [routerLink]="['/cars/car/rent', car.id]" value="Kirala" /></td>
         </tr>
     </tbody>
 </table>

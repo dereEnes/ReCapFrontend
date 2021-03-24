@@ -15,6 +15,7 @@ import { RentalComponent } from '../rental/rental.component';
 export class BrandComponent implements OnInit {
   brands:Brand[]=[];
   dataLoaded=false;
+  filterText="";
   constructor(private brandService:BrandService) { }
 
   ngOnInit(): void {

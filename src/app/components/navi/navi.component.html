@@ -10,17 +10,17 @@
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link"  routerLink="cars/car/rent/payment/1">Ödeme</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+          <a class="nav-link dropdown-toggle"  id="navbarDropdown"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Ekle
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" >Action</a></li>
-            <li><a class="dropdown-item" >Another action</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/brands/brand/add']">Marka</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/colors/color/add']">Renk</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" >Something else here</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/cars/car/add']">Araba</a></li>
           </ul>
         </li>
         <li class="nav-item">

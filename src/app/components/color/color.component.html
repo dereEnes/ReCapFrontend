@@ -1,7 +1,22 @@
-<ul class="list-group">
-    <li class="list-group-item list-group-item-primary"
-    *ngFor="let color of colors"
-    routerLink="cars/color/{{color.id}}"
-    (click)="setCurrentColor(color)"
-    >{{color.name}}</li>
-</ul>
+<div class="mb-3">
+    <label for="filterText" class="form-label"><b> Renk Ara</b></label>
+    <input type="text" [(ngModel)]="filterText" class="form-control form-control-sm" id="colorFilterText" placeholder="Aranacak renk">
+  </div>
+  <div *ngIf="filterText" class="alert alert-primary">
+    <b>  {{filterText | uppercase}}</b> Araması için sonuçlar;
+  </div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Renkler</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="table-primary active" *ngFor="let color of colors | filterColor:filterText">
+            
+            <td (click)="setCurrentColor(color)" routerLink="cars/color/{{color.id}}">{{color.name}}</td>
+            <td><input type="button" class="btn-light" value="Güncelle" [routerLink]="['colors/colorUpdate' ,color.id]"></td>
+        </tr>
+    </tbody>
+</table>

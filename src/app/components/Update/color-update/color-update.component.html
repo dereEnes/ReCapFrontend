@@ -1,0 +1,20 @@
+<div class="content">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header"><h5>MARKA EKLEME</h5></div>
+        <div class="card-body">
+           <form [formGroup]="colorUpdateForm">
+            <div class="mb-3">
+              <label for="name">Marka İsmi</label>
+              <div class="form-group">
+                <input type="text" formControlName="name"  [(ngModel)]="selectedColor.name" class="form-control" >
+              </div>
+            </div>
+           </form> 
+        </div>
+        <div class="card-footer"><button class="btn btn-fill btn-primary"  (click)="updateColor()" >Güncelle</button></div>
+      </div>
+    </div>
+  </div>
+  
+

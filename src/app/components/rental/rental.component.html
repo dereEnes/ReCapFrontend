@@ -15,8 +15,9 @@
         <td>{{rental.brandName}}</td>
         <td>{{rental.firstName}}</td>
         <td>{{rental.lastName}}</td>
-        <td>{{rental.rentDate}}</td>
-        <td>{{rental.returnDate}}</td>
+        <td>{{rental.rentDate | date:'dd.MM.yyyy'}}</td>
+        <td *ngIf="rental.returnDate!=null">{{rental.returnDate | date}}</td>
+        <td *ngIf="rental.returnDate==null">Henüz Teslim Edilmedi</td>
       </tr>
       
     </tbody>
