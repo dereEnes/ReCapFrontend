@@ -4,6 +4,7 @@ import { BrandService } from 'src/app/services/brand.service';
 import { CarDtoService } from 'src/app/services/car-dto.service';
 import { ColorService } from 'src/app/services/color.service';
 import { CarComponent } from '../car/car.component';
+import { NaviComponent } from '../navi/navi.component';
 import { RentalComponent } from '../rental/rental.component';
 
 @Component({
@@ -16,10 +17,19 @@ export class BrandComponent implements OnInit {
   brands:Brand[]=[];
   dataLoaded=false;
   filterText="";
-  constructor(private brandService:BrandService) { }
+  isAuthentication = false;
+  
+  constructor(private brandService:BrandService
+    
+    ) { }
 
   ngOnInit(): void {
     this.getBrands();
+    if(localStorage.getItem("token")){
+      this.isAuthentication = true;
+    }else{
+      this.isAuthentication = false;
+    }
   }
   
   getBrands(){

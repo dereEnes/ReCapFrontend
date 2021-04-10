@@ -26,39 +26,64 @@
   
 <hr>
 <div class="mb-3">
-    <label for="filterText" class="form-label"><b> Araba Ara</b></label>
+    <label for="filterText" class="form-label"><b class="text-dark"> Araba Ara</b></label>
     <input type="text" [(ngModel)]="filterText" class="form-control form-control-lg" id="filterText" placeholder="Aranacak Kelime">
   </div>
   <div *ngIf="filterText" class="alert alert-primary">
     <b>  {{filterText | uppercase}}</b> Araması için sonuçlar;
   </div>
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">İd</th>
-            <th scope="col">Marka</th>
-            <th scope="col">Renk</th>
-            <th scope="col">Fiyat</th>
-            <th scope="col">Model Yılı</th>
-            <th scope="col">Açıklama</th>
-            <th></th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr class="table-light" *ngFor="let car of cars | filterCar:filterText" >
-            <td>{{car.id}}</td>
-            <td>{{car.brandName}}</td>
-            <td>{{car.colorName}}</td>
-            <td>{{car.dailyPrice | currency:'USD':"code":"1.2-2"}}</td>
-            <td>{{car.modelYear}}</td>
-            <td>{{car.description}}</td>
-            <td><input class="btn-light" type="button" [routerLink]="['/cars/car/car-detail', car.id]"  value="Detaylar" /></td>
-            <td><input class="btn-light" type="button" (click)="rentACar(car)"  [routerLink]="['/cars/car/rent', car.id]" value="Kirala" /></td>
-            <td><input type="button" value="Güncelle" class="btn-light" [routerLink]="['cars/car/carUpdate', car.id]"></td>
-        </tr>
-    </tbody>
-</table>
 
+  <main>
+    
+  
+    <div class="album py-5 bg-none">
+      <div class="container">
+  
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          
+          <div class="col"  *ngFor="let car of cars | filterCar:filterText">
+            <div class="card shadow-sm">
+              <img class="bd-placeholder-img card-img-top" width="100%" height="225" 
+              [src]="getCarImageUrl(car.id)" role="img" aria-label="Placeholder: ظفري" 
+              preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">{{car.id}}</li>
+                <li class="list-group-item">{{car.brandName}}</li>
+                <li class="list-group-item">{{car.colorName}}</li>
+                <li class="list-group-item">{{car.modelYear}}</li>
+                <li class="list-group-item">{{car.dailyPrice | currency:'USD':"code":"1.2-2"}}</li>
+                <li class="list-group-item">{{car.description}}</li>
+              </ul>
+              <div class="card-body">
+                <p class="card-text"></p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" [routerLink]="['cars/car/car-detail' ,car.id]" class="btn btn-sm btn-outline-secondary">Detaylar</button>
+                    <button type="button" *ngIf="isAuthentication" [routerLink]="['cars/car/rent' ,car.id]" class="btn btn-sm btn-outline-secondary">Kirala</button>
+                    <button type="button" *ngIf="isAuthentication" [routerLink]="['cars/car/carUpdate' ,car.id]" class="btn btn-sm btn-outline-secondary">Güncelle</button>
+                  </div>
+                  <small class="text-muted"></small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- <section class="py-5 text-center container">
+      <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+          <h1 class="fw-light">Kangal Kiralık Araç</h1>
+          <p class="lead text-muted">Lorem Ipsum is simply dummy text of thnown printer tecimeed not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+          <p>
+            <a href="#" class="btn btn-primary my-2">KİRALIK</a>
+            <a href="#" class="btn btn-secondary my-2">SON MODEL</a>
+          </p>
+        </div>
+      </div>
+    </section> -->
+  
+  </main>
 

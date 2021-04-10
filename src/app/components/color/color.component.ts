@@ -11,10 +11,16 @@ export class ColorComponent implements OnInit {
   colors:Color[]=[];
   dataLoaded=false;
   filterText="";
+  isAuthentication=false;
   constructor(private colorService:ColorService) { }
 
   ngOnInit(): void {
     this.getColors();
+    if(localStorage.getItem("token")){
+      this.isAuthentication = true;
+    }else{
+      this.isAuthentication = false;
+    }
   }
 
   getColors(){

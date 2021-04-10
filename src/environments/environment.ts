@@ -3,6 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+   carImagesBaseUrl:"https://localhost:44340/uploads/",
+   apiUrl:"https://localhost:44340/api/",
   production: false
 };
 

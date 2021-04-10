@@ -12,7 +12,7 @@ import { ColorService } from 'src/app/services/color.service';
 })
 export class ColorUpdateComponent implements OnInit {
   colorUpdateForm:FormGroup;
-  selectedColor:Color;
+  selectedColor:Color={id:0,name:""};
   colorId:number;
   constructor(
     private toastrService:ToastrService,

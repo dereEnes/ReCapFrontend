@@ -1,11 +1,11 @@
-<div class="mb-3">
+<!-- <div class="mb-3">
     <label for="filterText" class="form-label"><b> Renk Ara</b></label>
     <input type="text" [(ngModel)]="filterText" class="form-control form-control-sm" id="colorFilterText" placeholder="Aranacak renk">
   </div>
   <div *ngIf="filterText" class="alert alert-primary">
     <b>  {{filterText | uppercase}}</b> Araması için sonuçlar;
-  </div>
-<table class="table">
+  </div> -->
+<table class="table table-warning table-striped table-hover">
     <thead>
         <tr>
             <th scope="col">Renkler</th>
@@ -13,10 +13,10 @@
         </tr>
     </thead>
     <tbody>
-        <tr class="table-primary active" *ngFor="let color of colors | filterColor:filterText">
+        <tr class="table-warning active" *ngFor="let color of colors | filterColor:filterText">
             
             <td (click)="setCurrentColor(color)" routerLink="cars/color/{{color.id}}">{{color.name}}</td>
-            <td><input type="button" class="btn-light" value="Güncelle" [routerLink]="['colors/colorUpdate' ,color.id]"></td>
+            <td *ngIf="isAuthentication"><input type="button" class="w-100 btn btn-primary btn-md" value="Güncelle" [routerLink]="['colors/colorUpdate' ,color.id]"></td>
         </tr>
     </tbody>
 </table>

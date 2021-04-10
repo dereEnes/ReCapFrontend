@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import {FormGroup,FormBuilder, FormControl, Validators} from "@angular/forms";
 import { ToastrService } from 'ngx-toastr';
-import { CreditCard } from 'src/app/models/creditCard';
+import { Payment } from 'src/app/models/payment';
 import { PaymentService } from 'src/app/services/payment.service';
 
 
@@ -27,15 +27,17 @@ export class PaymentComponent implements OnInit {
   createPaymentForm(){
     this.paymentForm=this.formBuilder.group({
       cardNo:["",Validators.required],
+      nameOnCard:["",Validators.required],
       expityMonth:[,Validators.required],
       expityYear:[,Validators.required],
-      cvCode:[,Validators.required]
+      cvCode:[,Validators.required],
+      fullName:[,Validators.required]
 
     })
   }
   payment(){
     if(this.paymentForm.valid){
-      let paymetModel:CreditCard=Object.assign({},this.paymentForm.value)
+      let paymetModel:Payment=Object.assign({},this.paymentForm.value)
       
       this.paymentService.payment(paymetModel).subscribe((Response)=>{
         this.toastrService.success("Ödeme Başarılı")

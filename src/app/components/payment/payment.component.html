@@ -1,59 +1,89 @@
+
+
 <div class="container">
-    <div class="row">
-        <div class="col-xs-12 col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">
-                        Payment Details
-                    </h3>
-                    <div class="checkbox pull-right">
-                        <label>
-                            <input type="checkbox" />
-                            Remember
-                        </label>
-                    </div>
-                </div>
-                <div class="panel-body">
-                    <form [formGroup]="paymentForm">
-                    <div class="form-group">
-                        <label for="cardNumber">
-                            KART NUMARASI</label>
-                        <div class="input-group">
-                            <input type="text" class="form-control" formControlName="cardNo" id="cardNumber" placeholder="Geçerli bir kart numarası"
-                                required autofocus />
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-7 col-md-7">
-                            <div class="form-group">
-                                <label for="expityMonth">
-                                    SON GEÇERLİLİK TARİHİ</label>
-                                <div class="col-xs-6 col-lg-6 pl-ziro">
-                                    <input type="number" class="form-control" formControlName="expityMonth" id="expityMonth" placeholder="MM" required />
-                                </div>
-                                <div class="col-xs-6 col-lg-6 pl-ziro">
-                                    <input type="number" class="form-control" formControlName="expityYear" id="expityYear" placeholder="YY" required /></div>
-                            </div>
-                        </div>
-                        <div class="col-xs-5 col-md-5 pull-right">
-                            <div class="form-group">
-                                <label for="cvCode">
-                                    CV KODU</label>
-                                <input type="number" formControlName="cvCode" class="form-control" id="cvCode" placeholder="CV" required />
-                            </div>
-                        </div>
-                    </div>
-                    </form>
-                </div>
+    <main>
+      <div class="row g-5">
+        <div class="col-md-7 col-lg-8">
+          <form [formGroup]="paymentForm" class="needs-validation" novalidate>
+            <hr class="my-4">
+            <h4 class="mb-3">Payment</h4>
+            <div class="my-3">
+              <div class="form-check">
+                <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
+                <label class="form-check-label" for="credit">Credit card</label>
+              </div>
+              <div class="form-check">
+                <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required>
+                <label class="form-check-label" for="debit">Debit card</label>
+              </div>
+              <div class="form-check">
+                <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
+                <label class="form-check-label" for="paypal">PayPal</label>
+              </div>
             </div>
-            <ul class="nav nav-pills nav-stacked">
-                <li class="active"><a href="#"><span class="badge pull-right"><span class="glyphicon glyphicon-usd"></span>4200</span> Toplam Ödeme</a>
-                </li>
-            </ul>
-            <br/>
-            <button class="btn btn-success btn-lg btn-block" (click)="payment()" [disabled]="!paymentForm.valid">Pay</button>
-            
+  
+            <div class="row gy-3">
+              <div class="col-md-6">
+                <label for="cc-name" class="form-label">Kart üzerindeki isim</label>
+                <input type="text" formControlName="nameOnCard" class="form-control" id="cc-name" placeholder="" required>
+                <small class="text-muted">Kart üzerindeki tam isim</small>
+                <div class="invalid-feedback">
+                  kart üzerindeki ad-soyad gerekli
+                </div>
+              </div>
+  
+              <div class="col-md-6">
+                <label for="cc-number" class="form-label">Credit card number</label>
+                <input type="text" formControlName="cardNo" id="cardNumber" class="form-control"  placeholder="" required>
+                <div class="invalid-feedback">
+                  credi kartı numarası gerekli
+                </div>
+              </div>
+  
+              <div class="col-md-3">
+                <label for="cc-expiration" class="form-label">Expiration Month</label>
+                <input type="text" formControlName="expityMonth" id="expityMonth" class="form-control" placeholder="" required>
+                <div class="invalid-feedback">
+                  Expiration date required
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <label for="cc-expiration" class="form-label">Expiration Year</label>
+                <input type="text" formControlName="expityMonth" id="expityYear" class="form-control" placeholder="" required>
+                <div class="invalid-feedback">
+                  Expiration date required
+                </div>
+              </div>
+  
+              <div class="col-md-3">
+                <label for="cc-cvv" class="form-label">CVV</label>
+                <input type="text" class="form-control" id="cc-cvv" formControlName="cvCode" placeholder="" required>
+                <div class="invalid-feedback">
+                  Security code required
+                </div>
+              </div>
+            </div>
+  
+            <hr class="my-4">
+  
+            <button class="w-100 btn btn-primary btn-lg" (click)="payment()" [disabled]="!paymentForm.valid" type="submit">Ödeme Yap</button>
+          </form>
         </div>
-    </div>
-</div>
+      </div>
+    </main>
+  
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; 2017–2021 Company Name</p>
+      <ul class="list-inline">
+        <li class="list-inline-item"><a href="#">Privacy</a></li>
+        <li class="list-inline-item"><a href="#">Terms</a></li>
+        <li class="list-inline-item"><a href="#">Support</a></li>
+      </ul>
+    </footer>
+  </div>
+  
+  
+      <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+  
+        <script src="form-validation.js"></script>

@@ -1,0 +1,49 @@
+<body class="text-center">
+  <main class="form-signin">
+    <form [formGroup]="loginForm">
+      <img
+        class="mb-4"
+        src="https://cdn0.iconfinder.com/data/icons/set-ui-app-android/32/8-512.png"
+        alt=""
+        width="72"
+        height="57"
+      />
+      <h1 class="h3 mb-3 fw-normal">Giriş Yapın</h1>
+
+      <div class="form-floating">
+        <input
+          type="email"
+          formControlName="email"
+          class="form-control"
+          id="email"
+          placeholder="name@example.com"
+        />
+        <label for="email">Email</label>
+      </div>
+      <div class="form-floating">
+        <input
+          type="password"
+          formControlName="password"
+          class="form-control"
+          id="password"
+          placeholder="Password"
+        />
+        <label for="password">Şifre</label>
+      </div>
+
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me" /> Beni Hatırla
+        </label>
+      </div>
+      <button
+        class="w-100 btn btn-lg btn-primary"
+        (click)="login()"
+        type="submit"
+      >
+        Giriş
+      </button>
+      <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+    </form>
+  </main>
+</body>

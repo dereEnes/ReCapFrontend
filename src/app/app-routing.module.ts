@@ -6,16 +6,23 @@ import { CarDetailComponent } from './components/car-detail/car-detail.component
 import { CarComponent } from './components/car/car.component';
 import { ColorAddComponent } from './components/color-add/color-add.component';
 import { CustomerComponent } from './components/customer/customer.component';
+import { LoginComponent } from './components/login/login.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { RegisterComponent } from './components/register/register.component';
 import { RentComponent } from './components/rent/rent.component';
 import { BrandUpdateComponent } from './components/Update/brand-update/brand-update.component';
 import { CarUpdateComponent } from './components/Update/car-update/car-update.component';
 import { ColorUpdateComponent } from './components/Update/color-update/color-update.component';
+import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
-  {path:"cars/car/add",component:CarAddComponent},
-  {path:"colors/color/add",component:ColorAddComponent},
-  {path:"brands/brand/add",component:BrandAddComponent},
+  {path:"cars/car/add",component:CarAddComponent,canActivate:[LoginGuard]},
+  {path:"colors/color/add",component:ColorAddComponent,canActivate:[LoginGuard]},
+  {path:"brands/brand/add",component:BrandAddComponent,canActivate:[LoginGuard]},
+
+  {path:"cars/car/carUpdate/:carId",component:CarUpdateComponent,canActivate:[LoginGuard]},
+  {path:"colors/colorUpdate/:colorId",component:ColorUpdateComponent,canActivate:[LoginGuard]},
+  {path:"brands/brandUpdate/:brandId",component:BrandUpdateComponent,canActivate:[LoginGuard]},
 
   {path:"",pathMatch:"full",component:CarComponent},
   {path:"cars",component:CarComponent},
@@ -24,10 +31,10 @@ const routes: Routes = [
   {path:"cars/:brandId/:colorId",component:CarComponent},
   {path:"cars/car/car-detail/:carId", component:CarDetailComponent},
   {path:"cars/car/rent/:carId",component:RentComponent},
-  {path:"cars/car/rent/payment/:carId",component:PaymentComponent},
-  {path:"cars/car/carUpdate/:carId",component:CarUpdateComponent},
-  {path:"colors/colorUpdate/:colorId",component:ColorUpdateComponent},
-  {path:"brands/brandUpdate/:brandId",component:BrandUpdateComponent}
+  {path:"payment/:customerId",component:PaymentComponent},
+  
+  {path:"login",component:LoginComponent},
+  {path:"register",component:RegisterComponent}
 ];
 
 @NgModule({

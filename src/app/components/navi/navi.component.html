@@ -1,20 +1,23 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-primary ps-5">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="#"><h5 class="text-white">Anasayfa</h5></a>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link"  routerLink="cars/car/rent/payment/1">Ödeme</a>
+          <a class="nav-link" href="#"><h5 class="text-white"><a>Ödeme</a></h5></a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle"  id="navbarDropdown"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Ekle
+
+        <li class="nav-item dropdown" >
+          <a class="nav-link dropdown-toggle" *ngIf="isAuthentication" 
+           id="navbarDropdown"  role="button" data-bs-toggle="dropdown" aria-expanded="true">
+            <h5 class="text-white">Ekle</h5>
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" [routerLink]="['/brands/brand/add']">Marka</a></li>
@@ -23,14 +26,17 @@
             <li><a class="dropdown-item" [routerLink]="['/cars/car/add']">Araba</a></li>
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
+
+        
       </ul>
+
       <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <label *ngIf="isAuthentication" for=""><h5 class="text-white nav-item mt-1 mx-4">Kullanıcı : {{fullName}}</h5></label>
+        <button class="btn btn-warning mx-1" [routerLink]="['login']" *ngIf="!isAuthentication" type="submit">GİRİŞ</button>
+        <button class="btn btn-danger ml-1" [routerLink]="['']" *ngIf="isAuthentication" (click)="Logout()" type="submit">Çıkış Yap</button>
       </form>
+
     </div>
   </div>
 </nav>
+

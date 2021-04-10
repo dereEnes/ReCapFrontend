@@ -7,17 +7,17 @@
           <div class="mb-3">
             <label for="customer">Müşteri Seçimi</label>
             <div class="form-group">
-              <input type="number" formControlName="customerId" class="form-control" >
-              <!-- <select [(ngModel)]="customerId" id="disabledSelect" formControlName="customerId" class="form-select">
-                <option *ngFor="let customer of customers" value="{{customer.id}}" [selected]="getSelectedCustomer(customer.id)">{{customer.firstName | uppercase}} {{customer.lastName | uppercase}}</option>
-              </select> -->
+              <!-- <input type="number" formControlName="customerId" class="form-control" > -->
+              <select [(ngModel)]="customerId" id="disabledSelect" formControlName="customerId" class="form-select">
+                <option *ngFor="let customer of customers;let i = index " value="{{customer.id}}" [selected]="getSelectedCustomer(i)">{{customer.firstName | uppercase}} {{customer.lastName | uppercase}}</option>
+              </select>
             </div>
           </div>
 
           <div class="mb-3">
             <label for="customer">Araba Seçimi</label>
             <div class="form-group">
-              <input type="number" formControlName="carId" class="form-control" >
+              <input type="number" formControlName="carId" [(ngModel)]="carId" class="form-control" >
             </div>
           </div>
 
@@ -37,7 +37,7 @@
 
         </form>
       </div>
-      <div class="card-footer"><button class="btn btn-fill btn-primary"  (click)="addRental()" [routerLink]="['/cars/car/rent/payment/2']">Ekle</button></div>
+      <div class="card-footer"><button class="btn btn-fill btn-primary"  (click)="addRental()" >Ekle</button></div>
     </div>
   </div>
 </div>

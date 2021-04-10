@@ -1,23 +1,23 @@
-<div class="mb-3">
+<!-- <div class="mb-3">
     <label for="filterText" class="form-label"><b> Marka Ara</b></label>
     <input type="text" [(ngModel)]="filterText" class="form-control form-control-sm" id="brandFilterText" placeholder="Aranacak Kelime">
   </div>
   <div *ngIf="filterText" class="alert alert-primary">
     <b>  {{filterText | uppercase}}</b> Araması için sonuçlar;
-  </div>
-<table class="table">
+  </div> -->
+<table class="table table-warning table-striped table-hover">
     <thead>
         <tr>
             
-            <th scope="col">Markalar</th>
+            <th scope="col active">Markalar</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        <tr class="table-primary active" *ngFor="let brand of brands | filterBrand:filterText">
+        <tr class="active" *ngFor="let brand of brands | filterBrand:filterText">
             
             <td (click)="setCurrentBrand(brand)" routerLink="/cars/brand/{{brand.id}}">{{brand.name}}</td>
-            <td><input class="btn-light" type="button" value="Güncelle" [routerLink]="['brands/brandUpdate' ,brand.id]"></td>
+            <td *ngIf="isAuthentication"><input  class="w-100 btn btn-primary btn-md" type="button" value="Güncelle" [routerLink]="['brands/brandUpdate' ,brand.id]"></td>
         </tr>
     </tbody>
 </table>
