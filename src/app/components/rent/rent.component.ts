@@ -64,7 +64,7 @@ export class RentComponent implements OnInit {
       customerId: [, Validators.required],
       carId:[, Validators.required],
       rentDate: [, Validators.required],
-      returnDate: [,]
+      returnDate: [,Validators.required]
     });
   }
 
@@ -78,7 +78,7 @@ export class RentComponent implements OnInit {
 
        this.rentalDtoService.addRental(rentalModel).subscribe(Response=>{
          this.toastrService.success("Başarılı")
-        this.route.navigate(["payment"])
+        this.route.navigate(["payment",rentalModel.customerId])
 
        },responseError=>{
          this.toastrService.error(responseError.error.message)
