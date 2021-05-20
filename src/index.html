@@ -12,12 +12,29 @@
 
 <!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
 <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 
 
 </head>
 <body>
   <app-root></app-root>
+  <script >
+  $(document).ready(function(){
+    $("#topButton").click(function() {
+            var filePath = $("#carImage").val();
+           // $scope.fileURL = filePath;
+        document.getElementById("baslik").innerHTML = filePath;
+    })
+
+    
+  })
+  
+
+  
+  
+  
+  
+  </script>
 </body>
 </html>

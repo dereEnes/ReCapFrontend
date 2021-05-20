@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {FormsModule,ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations"
 
 import { AppRoutingModule } from './app-routing.module';
@@ -29,6 +29,9 @@ import { BrandUpdateComponent } from './components/Update/brand-update/brand-upd
 import { LoginComponent } from './components/login/login.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { RegisterComponent } from './components/register/register.component';
+import { ImageAddComponent } from './components/image-add/image-add.component';
+import { MainSliderComponent } from './components/main-slider/main-slider.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +55,10 @@ import { RegisterComponent } from './components/register/register.component';
     ColorUpdateComponent,
     BrandUpdateComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ImageAddComponent,
+    MainSliderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

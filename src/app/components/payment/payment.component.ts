@@ -26,7 +26,7 @@ export class PaymentComponent implements OnInit {
   }
   createPaymentForm(){
     this.paymentForm=this.formBuilder.group({
-      cardNo:["",Validators.required,Validators.maxLength(17),Validators.minLength(15)],
+      cardNo:["",Validators.required],
       nameOnCard:["",Validators.required],
       expityMonth:[,Validators.required],
       expityYear:[,Validators.required],

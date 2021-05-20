@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-primary ps-5">
+<nav class="navbar navbar-expand-lg navbar-light bg-success ps-5">
   <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -24,12 +24,18 @@
             <li><a class="dropdown-item" [routerLink]="['/colors/color/add']">Renk</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" [routerLink]="['/cars/car/add']">Araba</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/cars/image/add']">Resim</a></li>
           </ul>
         </li>
 
         
       </ul>
-
+      <ul>
+        <p id="baslik">Deneme</p>
+      </ul>
+      <ul>
+        <input type="button" id="topButton" class="btn btn-dark" value="Tıkla" (click)="hesapla()">
+      </ul>
       <form class="d-flex">
         <label *ngIf="isAuthentication" for=""><h5 class="text-white nav-item mt-1 mx-4">Kullanıcı : {{fullName}}</h5></label>
         <button class="btn btn-warning mx-1" [routerLink]="['login']" *ngIf="!isAuthentication" type="submit">GİRİŞ</button>
@@ -40,3 +46,6 @@
   </div>
 </nav>
 
+<div class="back">
+
+</div>

@@ -42,8 +42,10 @@ export class LoginComponent implements OnInit {
           this.localStorageService.setItem("fullName",(Response.firstName+" "+Response.lastName))
           
           
-          location.reload();
-          this.router.navigate([""]);
+          //
+          this.router.navigate([""]).then(()=>{
+            location.reload();
+          });
           
         })
         

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 
@@ -10,9 +10,11 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 export class NaviComponent implements OnInit {
   isAuthentication: boolean = false;
   fullName: string;
+  
   constructor(
     private localStorageService: LocalStorageService,
     private router:Router
+    
     ) {}
 
   ngOnInit(): void {
@@ -31,5 +33,8 @@ export class NaviComponent implements OnInit {
   }
   Reload() {
   window.location.reload();
+}
+hesapla(){
+   
 }
 }
