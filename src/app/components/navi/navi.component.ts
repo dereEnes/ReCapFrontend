@@ -11,6 +11,7 @@ export class NaviComponent implements OnInit {
   isAuthentication: boolean = false;
   fullName: string;
   
+
   constructor(
     private localStorageService: LocalStorageService,
     private router:Router
@@ -37,4 +38,5 @@ export class NaviComponent implements OnInit {
 hesapla(){
    
 }
+
 }

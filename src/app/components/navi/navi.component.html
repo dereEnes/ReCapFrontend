@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-success ps-5">
+ <nav class="navbar navbar-expand-lg navbar-light bg-dark ps-5">
   <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -27,14 +27,6 @@
             <li><a class="dropdown-item" [routerLink]="['/cars/image/add']">Resim</a></li>
           </ul>
         </li>
-
-        
-      </ul>
-      <ul>
-        <p id="baslik">Deneme</p>
-      </ul>
-      <ul>
-        <input type="button" id="topButton" class="btn btn-dark" value="Tıkla" (click)="hesapla()">
       </ul>
       <form class="d-flex">
         <label *ngIf="isAuthentication" for=""><h5 class="text-white nav-item mt-1 mx-4">Kullanıcı : {{fullName}}</h5></label>
@@ -46,6 +38,32 @@
   </div>
 </nav>
 
-<div class="back">
+<!-- <nav class="navbar">
+  <div class="brand-title">Future's Cars</div>
+  <a href="#" class="toggle-button">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </a>
+  <div class="navbar-links">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">Feedback</a></li>
+    </ul>
+  </div>
+</nav>
+<script>
+  $(document).ready(function () {
 
-</div>
+    
+  const toggleButton = document.getElementsByClassName('toggle-button')[0]
+const navbarLinks = document.getElementsByClassName('navbar-links')[0]
+
+toggleButton.addEventListener('click', () => {
+  navbarLinks.classList.toggle('active')
+})
+});
+</script> -->
