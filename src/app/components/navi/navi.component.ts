@@ -10,12 +10,12 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 export class NaviComponent implements OnInit {
   isAuthentication: boolean = false;
   fullName: string;
-  
+
 
   constructor(
     private localStorageService: LocalStorageService,
     private router:Router
-    
+
     ) {}
 
   ngOnInit(): void {
@@ -30,13 +30,14 @@ export class NaviComponent implements OnInit {
   Logout() {
     this.localStorageService.deleteItem("token")
     this.localStorageService.deleteItem("fullName")
+    this.localStorageService.deleteItem("email")
     this.Reload()
   }
   Reload() {
   window.location.reload();
 }
 hesapla(){
-   
+
 }
 
 }

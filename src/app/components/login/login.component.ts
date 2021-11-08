@@ -1,3 +1,4 @@
+import { EmailAdress } from './../../models/email';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -13,6 +14,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class LoginComponent implements OnInit {
   loginForm:FormGroup;
+  userEmail:string;
   constructor(
     private toastrService: ToastrService,
     private authService: AuthService,
@@ -25,12 +27,14 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.createLoginForm();
   }
+
   createLoginForm(){
     this.loginForm = this.formBuilder.group({
       email:["" , Validators.required],
       password:["",Validators.required]
     })
   }
+
   login(){
     if (this.loginForm.valid) {
 
@@ -40,22 +44,17 @@ export class LoginComponent implements OnInit {
         this.localStorageService.setItem("token",Response.data.token)
         this.userService.getFullName(loginModel.email).subscribe(Response => {
           this.localStorageService.setItem("fullName",(Response.firstName+" "+Response.lastName))
-          
-          
-          //
+          this.localStorageService.setItem("email",this.userEmail)
           this.router.navigate([""]).then(()=>{
             location.reload();
           });
-          
         })
-        
       },responseError => {
         this.toastrService.warning(responseError.error)
       })
-      
     } else {
-      
+
     }
   }
-   
+
 }

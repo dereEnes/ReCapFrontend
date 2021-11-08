@@ -21,28 +21,28 @@
                 <label class="form-check-label" for="paypal">PayPal</label>
               </div>
             </div>
-  
+
             <div class="row gy-3">
               <div class="col-md-6">
-                <label for="cc-name" class="form-label">Kart üzerindeki isim</label>
-                <input type="text" formControlName="nameOnCard" class="form-control" id="cc-name" placeholder="" required>
+                <label for="nameOnCard" class="form-label">Kart üzerindeki isim</label>
+                <input type="text" formControlName="nameOnCard" class="form-control" id="nameOnCard"  placeholder="" required>
                 <small class="text-muted">Kart üzerindeki tam isim</small>
                 <div class="invalid-feedback">
                   kart üzerindeki ad-soyad gerekli
                 </div>
               </div>
-  
+
               <div class="col-md-6">
                 <label for="cc-number" class="form-label">Credit card number</label>
-                <input type="text" minlength="16" maxlength="16" formControlName="cardNo" id="cardNumber" class="form-control"  placeholder="---- ---- ---- ----" required>
+                <input type="text" minlength="16" maxlength="16" formControlName="cardNo" id="cardNumber"  class="form-control"  placeholder="---- ---- ---- ----" required>
                 <div class="invalid-feedback">
                   credi kartı numarası gerekli
                 </div>
               </div>
-  
+
               <div class="col-md-3">
                 <label for="cc-expiration" class="form-label">Expiration Month</label>
-                <input type="text" minlength="2" maxlength="2" formControlName="expityMonth" id="expityMonth" class="form-control" placeholder="--" required>
+                <input type="text" minlength="2" maxlength="2" formControlName="expityMonth" id="expityMonth"  class="form-control" placeholder="--" required>
                 <div class="invalid-feedback">
                   Expiration date required
                 </div>
@@ -50,29 +50,29 @@
 
               <div class="col-md-3">
                 <label for="cc-expiration" class="form-label">Expiration Year</label>
-                <input type="text" minlength="4" maxlength="4" formControlName="expityYear" id="expityYear" class="form-control" placeholder="----" required>
+                <input type="text" minlength="4" maxlength="4" formControlName="expityYear" id="expityYear"  class="form-control" placeholder="----" required>
                 <div class="invalid-feedback">
                   Expiration date required
                 </div>
               </div>
-  
+
               <div class="col-md-3">
                 <label for="cc-cvv" class="form-label">CVV</label>
-                <input type="text" minlength="3" maxlength="3" class="form-control" id="cc-cvv" formControlName="cvCode" placeholder="---" required>
+                <input type="text" minlength="3" maxlength="3" class="form-control" id="cc-cvv"  formControlName="cvCode" placeholder="---" required>
                 <div class="invalid-feedback">
                   Security code required
                 </div>
               </div>
             </div>
-  
+
             <hr class="my-4">
-  
+
             <button class="w-100 btn btn-primary btn-lg" (click)="payment()" [disabled]="!paymentForm.valid" type="submit">Ödeme Yap</button>
           </form>
         </div>
       </div>
     </main>
-  
+
     <footer class="my-5 pt-5 text-muted text-center text-small">
       <p class="mb-1">&copy; 2017–2021 Company Name</p>
       <ul class="list-inline">
@@ -82,8 +82,8 @@
       </ul>
     </footer>
   </div>
-  
-  
+
+
       <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-  
+
         <script src="form-validation.js"></script>
