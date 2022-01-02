@@ -1,69 +1,142 @@
 <div class="container">
-    <div class="row">
-        <div class="col-md-4">
-            <select class="form-select" [(ngModel)]="selectedBrand" aria-label="Default select example" id="selectBrand">
-                
-                <option  *ngFor="let brand of brands;let i =index" [value]="i">{{brand.name | uppercase}}</option>
-                
-                
-              </select>
-        </div>
-        <div class="col-md-4">
-            <select class="form-select" [(ngModel)]="selectedColor" aria-label="Default select example" id="selectColor">
-                
-                <option  *ngFor="let color of colors; let i = index" [value]="i">{{color.name | uppercase}}</option>
-                
-                
-              </select>
-        </div>
-        <div class="col-md-4">
-            <button type="button" (click)="Filtrele()" *ngIf="brands" routerLink="/cars/{{brands[selectedBrand].id}}/{{brands[selectedColor].id}}" class="btn btn-success">Filtrele</button>
-        </div>
+  <div class="row">
+    <div class="col-md-4">
+      <select
+        class="form-select"
+        [(ngModel)]="selectedBrand"
+        aria-label="Default select example"
+        id="selectBrand"
+      >
+        <option *ngFor="let brand of brands; let i = index" [value]="i">
+          {{ brand.name | uppercase }}
+        </option>
+      </select>
     </div>
+    <div class="col-md-4">
+      <select
+        class="form-select"
+        [(ngModel)]="selectedColor"
+        aria-label="Default select example"
+        id="selectColor"
+      >
+        <option *ngFor="let color of colors; let i = index" [value]="i">
+          {{ color.name | uppercase }}
+        </option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <button
+        type="button"
+        (click)="Filtrele()"
+        *ngIf="brands"
+        routerLink="/cars/{{ brands[selectedBrand].id }}/{{
+          brands[selectedColor].id
+        }}"
+        class="btn btn-success"
+      >
+        Filtrele
+      </button>
+    </div>
+  </div>
 </div>
 
 <!-- /cars/{{brands[selectedBrand].id}} -->
-  
-<hr>
-<div class="mb-3">
-    <label for="filterText" class="form-label"><b class="text-dark"> Araba Ara</b></label>
-    <input type="text" [(ngModel)]="filterText" class="form-control form-control-lg" id="filterText" placeholder="Aranacak Kelime">
-  </div>
-  <div *ngIf="filterText" class="alert alert-primary">
-    <b>  {{filterText | uppercase}}</b> Araması için sonuçlar;
-  </div>
 
-  <main>
-    
-  
-    <div class="album py-5 bg-none">
-      <div class="container">
-  
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-          
-          <div class="col"  *ngFor="let car of cars | filterCar:filterText">
-            <div class="card shadow-sm">
-              <img class="bd-placeholder-img card-img-top" width="100%" height="225" 
-              [src]="getCarImageUrl(car.id)" role="img" aria-label="Placeholder: ظفري" 
-              preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">{{car.id}}</li>
-                <li class="list-group-item">Marka : {{car.brandName}}</li>
-                <li class="list-group-item">Renk : {{car.colorName}}</li>
-                <li class="list-group-item">Model Yılı : {{car.modelYear}}</li>
-                <li class="list-group-item">Günlük Fiyat : {{car.dailyPrice | currency:'USD':"code":"1.2-2"}}</li>
-                <li class="list-group-item">Açıklama : {{car.description}}</li>
-              </ul>
-              <div class="card-body">
-                <p class="card-text"></p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button type="button" [routerLink]="['cars/car/car-detail' ,car.id]" class="btn btn-sm btn-outline-secondary">Detaylar</button>
-                    <button type="button" *ngIf="isAuthentication" [routerLink]="['cars/car/rent' ,car.id]" class="btn btn-sm btn-outline-secondary">Kirala</button>
-                    <button type="button" *ngIf="isAuthentication" [routerLink]="['cars/car/carUpdate' ,car.id]" class="btn btn-sm btn-outline-secondary">Güncelle</button>
-                    <button type="button" *ngIf="isAuthentication" (click)="delete(car.id)" class="btn btn-sm btn-danger">Sil</button>
+<hr />
+<div class="mb-3">
+  <label for="filterText" class="form-label"
+    ><b class="text-dark"> Araba Ara</b></label
+  >
+  <input
+    type="text"
+    [(ngModel)]="filterText"
+    class="form-control form-control-lg"
+    id="filterText"
+    placeholder="Aranacak Kelime"
+  />
+</div>
+<div *ngIf="filterText" class="alert alert-primary">
+  <b> {{ filterText | uppercase }}</b> Araması için sonuçlar;
+</div>
+
+<main>
+  <div class="album py-5 bg-none">
+    <div class="container p-0">
+      <div class="row">
+        <div class="col col-lg-2 col-md-3">
+          <app-brand></app-brand>
+          <app-color></app-color>
+        </div>
+
+        <div class="col col-lg-10  col-md-9 ">
+          <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
+            <div class="col" *ngFor="let car of cars | filterCar: filterText">
+              <div class="card shadow-sm">
+                <img
+                  class="bd-placeholder-img card-img-top"
+                  width="100%"
+                  height="225"
+                  [src]="getCarImageUrl(car.id)"
+                  role="img"
+                  aria-label="Placeholder: ظفري"
+                  preserveAspectRatio="xMidYMid slice"
+                  focusable="false"
+                /><title>Placeholder</title>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Araç id : {{ car.id }}</li>
+                  <li class="list-group-item">Marka : {{ car.brandName }}</li>
+                  <li class="list-group-item">Renk : {{ car.colorName }}</li>
+                  <li class="list-group-item">
+                    Model Yılı : {{ car.modelYear }}
+                  </li>
+                  <li class="list-group-item">
+                    Günlük Fiyat :
+                    {{ car.dailyPrice | currency: "USD":"code":"1.2-2" }}
+                  </li>
+                  <li class="list-group-item">
+                    Açıklama : {{ car.description }}
+                  </li>
+                </ul>
+                <div class="card-body">
+                  <p class="card-text"></p>
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div class="btn-group">
+                      <button
+                        type="button"
+                        [routerLink]="['cars/car/car-detail', car.id]"
+                        class="btn btn-sm btn-outline-secondary"
+                      >
+                        Detaylar
+                      </button>
+                      <button
+                        type="button"
+                        *ngIf="isAuthentication"
+                        [routerLink]="['cars/car/rent', car.id]"
+                        class="btn btn-sm btn-outline-secondary"
+                      >
+                        Kirala
+                      </button>
+                      <button
+                        type="button"
+                        *ngIf="isAuthentication"
+                        [routerLink]="['cars/car/carUpdate', car.id]"
+                        class="btn btn-sm btn-outline-secondary"
+                      >
+                        Güncelle
+                      </button>
+                      <button
+                        type="button"
+                        *ngIf="isAuthentication"
+                        (click)="delete(car.id)"
+                        class="btn btn-sm btn-danger"
+                      >
+                        Sil
+                      </button>
+                    </div>
+                    <small class="text-muted"></small>
                   </div>
-                  <small class="text-muted"></small>
                 </div>
               </div>
             </div>
@@ -71,9 +144,9 @@
         </div>
       </div>
     </div>
+  </div>
 
-
-    <!-- <section class="py-5 text-center container">
+  <!-- <section class="py-5 text-center container">
       <div class="row py-lg-5">
         <div class="col-lg-6 col-md-8 mx-auto">
           <h1 class="fw-light">Kangal Kiralık Araç</h1>
@@ -85,6 +158,4 @@
         </div>
       </div>
     </section> -->
-  
-  </main>
-
+</main>

@@ -5,7 +5,7 @@
   <div *ngIf="filterText" class="alert alert-primary">
     <b>  {{filterText | uppercase}}</b> Araması için sonuçlar;
   </div> -->
-<table class="table table-dark  table-hover">
+<table class="table table-dark  table-hover ">
     <thead>
         <tr>
             <th scope="col">Renkler</th>
@@ -16,7 +16,7 @@
         <tr class="active" *ngFor="let color of colors | filterColor:filterText">
             
             <td class="text-lowercase" (click)="setCurrentColor(color)" routerLink="cars/color/{{color.id}}">{{color.name}}</td>
-            <td *ngIf="isAuthentication"><input type="button" class="w-100 btn btn-primary btn-md" value="Güncelle" [routerLink]="['colors/colorUpdate' ,color.id]"></td>
+            <td class="d-flex justify-content-end" *ngIf="isAuthentication"><input type="button" class="btn btn-primary btn-sm" value="Güncelle" [routerLink]="['colors/colorUpdate' ,color.id]"></td>
         </tr>
     </tbody>
 </table>

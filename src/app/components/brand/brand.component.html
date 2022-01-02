@@ -16,7 +16,7 @@
         <tr class="active" *ngFor="let brand of brands | filterBrand:filterText">
             
             <td class="text-lowercase" (click)="setCurrentBrand(brand)" routerLink="/cars/brand/{{brand.id}}">{{brand.name}}</td>
-            <td *ngIf="isAuthentication"><input  class="w-100 btn btn-primary btn-md" type="button" value="Güncelle" [routerLink]="['brands/brandUpdate' ,brand.id]"></td>
+            <td class="d-flex justify-content-end" *ngIf="isAuthentication"><input  class="btn btn-primary btn-sm" type="button" value="Güncelle" [routerLink]="['brands/brandUpdate' ,brand.id]"></td>
         </tr>
     </tbody>
 </table>
