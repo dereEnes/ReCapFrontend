@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, FormControl, Validators} from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Payment } from 'src/app/models/payment';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { PaymentService } from 'src/app/services/payment.service';
 
 
@@ -21,7 +22,8 @@ export class PaymentComponent implements OnInit {
 
     private formBuilder: FormBuilder,
     private toastrService: ToastrService,
-    private paymentService: PaymentService
+    private paymentService: PaymentService,
+    private localStorageService: LocalStorageService
   ) { }
 
   ngOnInit(): void {
@@ -42,6 +44,8 @@ export class PaymentComponent implements OnInit {
     console.log('1');
     if (this.paymentForm.valid){
       let paymetModel: Payment = Object.assign({}, this.paymentForm.value);
+      paymetModel.amount = 1;
+      paymetModel.customerEmail = "enes@gmail.com"; //this.localStorageService.getItem("email");
 
       this.paymentService.payment(paymetModel).subscribe((Response) => {
         this.toastrService.success("Ödeme Başarılı");

@@ -59,6 +59,7 @@ export class CarComponent implements OnInit {
         this.getCarsByColor(params['colorId']);
       } else {
         this.getCarsDetails();
+
       }
     });
   }
@@ -73,6 +74,7 @@ export class CarComponent implements OnInit {
     this.carsDtoService.getCarsDetails().subscribe((response) => {
       this.cars = response.data;
       this.dataListed = true;
+      
     });
   }
   getCarsByBrand(id: number) {
@@ -97,10 +99,13 @@ export class CarComponent implements OnInit {
   }
   getCarImageUrl(id: number) {
     let car   : CarImage[] = this.carsImage.filter((c) => c.carId == id);
-    if (car) {
-      return this.carImagesBaseUrl + car[0].imagePath;
+    if (car.length >= 1) {
+      return this.carImagesBaseUrl + car[0].imagePath;  
     } else {
       return this.carImagesBaseUrl + 'default.jpg';
     }
+  }
+  delete(id:number){
+    this.carsDtoService.deleteCar(id)
   }
 }

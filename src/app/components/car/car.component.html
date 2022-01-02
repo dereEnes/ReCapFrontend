@@ -61,6 +61,7 @@
                     <button type="button" [routerLink]="['cars/car/car-detail' ,car.id]" class="btn btn-sm btn-outline-secondary">Detaylar</button>
                     <button type="button" *ngIf="isAuthentication" [routerLink]="['cars/car/rent' ,car.id]" class="btn btn-sm btn-outline-secondary">Kirala</button>
                     <button type="button" *ngIf="isAuthentication" [routerLink]="['cars/car/carUpdate' ,car.id]" class="btn btn-sm btn-outline-secondary">Güncelle</button>
+                    <button type="button" *ngIf="isAuthentication" (click)="delete(car.id)" class="btn btn-sm btn-danger">Sil</button>
                   </div>
                   <small class="text-muted"></small>
                 </div>
