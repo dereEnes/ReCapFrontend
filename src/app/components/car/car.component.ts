@@ -107,5 +107,8 @@ export class CarComponent implements OnInit {
   }
   delete(id:number){
     this.carsDtoService.deleteCar(id)
+    .subscribe(response => {
+      this.cars = this.cars.filter(car => car.id !== id);
+    })
   }
 }
