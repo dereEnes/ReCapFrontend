@@ -2,35 +2,35 @@
     <h2 class="h2">Araç Resmi Ekleme</h2>
     <hr />
   <form [formGroup]="imageAddForm">
-    <label for="exampleFormControlInput1" class="form-label"
+    <label for="carId" class="form-label"
       >İd</label>
     <input
-      type="email"
+      type="text"
       formControlName="carId"
       class="form-control"
       id="carId"
       placeholder="örn-1"
     />
-
-    <div class="form-group">
+    <!--<div class="form-group">
       <label for="name">File Name</label>
       <input class="form-control" id="file" formControlName="file" type="text">
       <div *ngIf="uf.name.touched && uf.name.invalid" class="alert alert-danger">
         
       </div>
-    </div>
-
+    </div> -->
     <label for="formFile" class="form-label"
       >Resim</label>
     <input class="form-control"
-    formControlName="file"  
+    formControlName="imageFile"  
     type="file"
     id="formFile"
-    (change)="onFileSelected($event)"
-       />
+    (change)="onFileSelect($event)"
+      />
     <br>
     <img [src]="imgFile" alt="Default Resim">
-      <div class="card-footer"><button id="sendPath" class="btn btn-fill btn-primary"  (click)="addImage()" >Ekle</button></div>
+      <div class="card-footer">
+        <button id="sendPath" class="btn btn-fill btn-primary" type="submit" (click)="imageAdd()">Resmi Ekle</button>
+      </div>
   </form>
 
 </div>

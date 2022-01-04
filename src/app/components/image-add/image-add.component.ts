@@ -15,22 +15,39 @@ export class ImageAddComponent implements OnInit {
   imgFile:string;
   selectedFile = null;
 
-  uploadForm = new FormGroup({
-    carId: new FormControl( [Validators.required]),
-    file: new FormControl('', [Validators.required]),
-    imgSrc: new FormControl('', [Validators.required])
-  });
-
-
-
   constructor(
     private formBuilder: FormBuilder,
     private toastrService: ToastrService,
     private imageAddService: ImageAddService
     ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.imageAddForm = this.formBuilder.group({
+      carId: [,Validators.required],
+      imageFile: ['',Validators.required]
+    })
+  }
 
+  imageAdd(){
+    if(this.imageAddForm.valid){
+      let imageToAdd: Image = Object.assign({},this.imageAddForm.value)
+      console.log(imageToAdd)
+      this.imageAddService.addImage(imageToAdd).subscribe(Response => {
+        this.toastrService.success("Resim başarılı bir şekilde eklendi.")
+      },responseError => {
+        this.toastrService.error("Resim eklenemedi!")
+      })
+    }else{
+      this.toastrService.warning("Please fill the areas!")
+    }
+  }
+  onFileSelect(event:any) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.imageAddForm.get('imageFile')?.setValue(file);
+    }
+  }
+/*
   get uf(){
     return this.uploadForm.controls;
   }
@@ -52,9 +69,6 @@ export class ImageAddComponent implements OnInit {
     }
   }
   
-
-  
-  
   addImage(){
     console.log(this.uploadForm.value);
     if (this.imageAddForm.valid && this.selectedFile != null){
@@ -72,5 +86,5 @@ export class ImageAddComponent implements OnInit {
         }
       });
     }
-  }
+  }*/
 }
