@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { ToastrService } from 'ngx-toastr';
 import { AddCarImageModel } from 'src/app/models/image';
 import { ImageAddService } from 'src/app/services/image-add.service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-image-add',
@@ -40,15 +41,7 @@ export class ImageAddComponent implements OnInit {
       
     }
   }
-
-//   PreviewImage() {
-//     var oFReader = new FileReader();
-//     oFReader.readAsDataURL(document.getElementById("imageFile")?.files[0]);
-
-//     oFReader.onload = function (oFREvent) {
-//         document.getElementById("uploadPreview").src = oFREvent.target.result;
-//     };
-// };
+  
 
   onSubmit() {
     if(!this.imageAddForm.valid){

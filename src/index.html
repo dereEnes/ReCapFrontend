@@ -1,40 +1,48 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>RentACar</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <!-- JavaScript Bundle with Popper -->
-  <!--  jQuery -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <head>
+    <meta charset="utf-8" />
+    <title>RentACar</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <!-- JavaScript Bundle with Popper -->
+    <!--  jQuery -->
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-1.11.3.min.js"
+    ></script>
 
-<!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
-<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://formden.com/static/cdn/bootstrap-iso.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <app-root></app-root>
+    <script>
+      $("document").ready(function () {
+        /*$("#topButton").click(function () {
+          var filePath = $("#carImage").val();
+          // $scope.fileURL = filePath;
+          document.getElementById("baslik").innerHTML = filePath;
+        });*/
 
-
-
-</head>
-<body>
-  <app-root></app-root>
-  <script >
-  $(document).ready(function(){
-    $("#topButton").click(function() {
-            var filePath = $("#carImage").val();
-           // $scope.fileURL = filePath;
-        document.getElementById("baslik").innerHTML = filePath;
-    })
-
-    
-  })
-  
-
-  
-  
-  
-  
-  </script>
-</body>
+        $("#imageFile").change(function () {
+          if (this.files && this.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+              $("#uploadPreview").attr("src", e.target.result);
+            };
+            reader.readAsDataURL(this.files[0]);
+          }
+        });
+      });
+    </script>
+  </body>
 </html>
