@@ -1,7 +1,7 @@
 <div class="mb-3">
     <h2 class="h2">Araç Resmi Ekleme</h2>
     <hr />
-  <form [formGroup]="imageAddForm">
+  <form [formGroup]="imageAddForm" (ngSubmit)="onSubmit()">
     <label for="carId" class="form-label"
       >İd</label>
     <input
@@ -23,13 +23,14 @@
     <input class="form-control"
     formControlName="imageFile"  
     type="file"
-    id="formFile"
+    id="imageFile"
+    accept="image/*"
     (change)="onFileSelect($event)"
       />
     <br>
-    <img [src]="imgFile" alt="Default Resim">
+    <img [src]="imgFile" alt="Seçilen Resim" id="uploadPreview">
       <div class="card-footer">
-        <button id="sendPath" class="btn btn-fill btn-primary" type="submit" (click)="imageAdd()">Resmi Ekle</button>
+        <button id="sendPath" class="btn btn-fill btn-primary" type="submit" >Resmi Ekle</button>
       </div>
   </form>
 

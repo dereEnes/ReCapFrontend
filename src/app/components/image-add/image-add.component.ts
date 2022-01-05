@@ -1,7 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { Image } from 'src/app/models/image';
+import { AddCarImageModel } from 'src/app/models/image';
 import { ImageAddService } from 'src/app/services/image-add.service';
 
 @Component({
@@ -18,7 +19,8 @@ export class ImageAddComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private toastrService: ToastrService,
-    private imageAddService: ImageAddService
+    private imageAddService: ImageAddService,
+    private httpClient: HttpClient
     ) { }
 
   ngOnInit(): void {
@@ -28,63 +30,44 @@ export class ImageAddComponent implements OnInit {
     })
   }
 
-  imageAdd(){
-    if(this.imageAddForm.valid){
-      let imageToAdd: Image = Object.assign({},this.imageAddForm.value)
-      console.log(imageToAdd)
-      this.imageAddService.addImage(imageToAdd).subscribe(Response => {
-        this.toastrService.success("Resim başarılı bir şekilde eklendi.")
-      },responseError => {
-        this.toastrService.error("Resim eklenemedi!")
-      })
-    }else{
-      this.toastrService.warning("Please fill the areas!")
-    }
-  }
   onFileSelect(event:any) {
     if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.imageAddForm.get('imageFile')?.setValue(file);
+      const file = event.target.files[0]
+      this.imageAddForm.get('imageFile')?.setValue(file)
+      console.log(event);
+      this.imgFile = file
+      
+      
     }
   }
-/*
-  get uf(){
-    return this.uploadForm.controls;
-  }
- 
 
-  onFileSelected(e: any){
-    const reader = new FileReader();
-    if(e.target.files && e.target.files.length) {
-      const [file] = e.target.files;
-      reader.readAsDataURL(file);
-    
-      reader.onload = () => {
-        this.imgFile = reader.result as string;
-        this.uploadForm.patchValue({
-          imgSrc: reader.result
-        });
-   
-      };
+//   PreviewImage() {
+//     var oFReader = new FileReader();
+//     oFReader.readAsDataURL(document.getElementById("imageFile")?.files[0]);
+
+//     oFReader.onload = function (oFREvent) {
+//         document.getElementById("uploadPreview").src = oFREvent.target.result;
+//     };
+// };
+
+  onSubmit() {
+    if(!this.imageAddForm.valid){
+      this.toastrService.warning("Lütfen alanların doldurunuz!")
+      return
     }
-  }
-  
-  addImage(){
-    console.log(this.uploadForm.value);
-    if (this.imageAddForm.valid && this.selectedFile != null){
-      let imageModel: Image = Object.assign({}, this.imageAddForm.value)
-      this.imageAddService.addImage(imageModel).subscribe(Response => {
-        this.toastrService.success('Araç resmi veritabanına eklendi');
-      }, responseError => {
-        console.log('hata');
-        if (responseError.console.error.Errors.length > 0)
-        {
-          for (let i = 0; i < responseError.error.Errors.length; i++) {
-            this.toastrService.error(responseError.error.Errors[i].ErrorMessage, 'Dogrulama hatası');
+    const formData = new FormData();
+    formData.append('imageFile', this.imageAddForm.get('imageFile')?.value);
+    formData.append('carId', this.imageAddForm.get('carId')?.value);
 
-          }
+    this.imageAddService.addImage(formData).subscribe(Response => {
+      this.toastrService.success("Resim başarıyla eklendi.")
+    },responseError => {
+      if(responseError.error.Errors.length > 0){
+        for (let i = 0; i < responseError.error.Errors.length; i++) {
+          this.toastrService.error(responseError.error.Errors[i].ErrorMessage,"Doğrulama Hatası")
         }
-      });
-    }
-  }*/
+      }
+    });
+    
+  }
 }
